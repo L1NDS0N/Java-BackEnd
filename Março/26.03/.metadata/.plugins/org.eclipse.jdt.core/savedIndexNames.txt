@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Técnico em informática\Atividades TI\Google Drive\SENAI\2019\.metadata\.plugins\org.eclipse.jdt.core
+1876866634.index
+2765885471.index
