@@ -23,10 +23,17 @@ public abstract class GenericDAO<T extends PersistDB> {
 		}
 		return false;
 	}
+
 	public T findById(Long id) {
-		return ts.get(id.intValue());
+		for (T t : ts) {
+			if (t.getId().equals(id)) {
+				return t;
+			}
+		}
+		return null;
 	}
-	public List<T> findAll(){
+
+	public List<T> findAll() {
 		return ts;
 	}
 }
