@@ -1,17 +1,31 @@
 package br.senai.rn.agenda.model;
 
+import br.senai.rn.agenda.dao.PersistDB;
 import br.senai.rn.agenda.model.enums.TipoFone;
 
-public class Fone {
+public class Fone implements PersistDB {
 
+	private Long id;
+	
 	private String fone;
 	private TipoFone tipoFone;
 	
 	public Fone() {}
 	
-	public Fone(String fone, TipoFone tipoFone) {
+	public Fone(Long id, String fone, TipoFone tipoFone) {
+		this.id = id;
 		this.fone = fone;
 		this.tipoFone = tipoFone;
+	}
+	
+	
+	@Override
+	public Long getId() {
+		return id;
+	}
+	@Override
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFone() {
@@ -34,7 +48,7 @@ public class Fone {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((fone == null) ? 0 : fone.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -47,17 +61,20 @@ public class Fone {
 		if (getClass() != obj.getClass())
 			return false;
 		Fone other = (Fone) obj;
-		if (fone == null) {
-			if (other.fone != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!fone.equals(other.fone))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Fone [fone=" + fone + ", tipoFone=" + tipoFone + "]";
+		return "Fone [id=" + id + ", fone=" + fone + ", tipoFone=" + tipoFone + "]";
 	}
+
 	
+
 }
+
