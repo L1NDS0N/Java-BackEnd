@@ -2,6 +2,7 @@ package br.senai.rn.agenda.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public abstract class GenericDAO<T extends PersistDB> {
 
@@ -36,4 +37,14 @@ public abstract class GenericDAO<T extends PersistDB> {
 	public List<T> findAll() {
 		return ts;
 	}
+
+	public String update(T oldName, T newName) {
+		if (!ts.contains(oldName)) {
+			for (T t : ts) {
+				ts.set(ts.indexOf(oldName), newName);
+			}
+		}
+		return null;
+	}
+
 }
