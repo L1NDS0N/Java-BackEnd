@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/fone")
 public class FoneController {
 
 	@GetMapping
@@ -16,4 +16,5 @@ public class FoneController {
 		
 		return "index";
 	}
+
 }
