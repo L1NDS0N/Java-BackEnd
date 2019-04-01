@@ -1,8 +1,9 @@
 package br.senai.rn.agenda.services;
 
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
+
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import br.senai.rn.agenda.dao.FoneDAO;
 import br.senai.rn.agenda.model.Fone;
@@ -10,14 +11,14 @@ import br.senai.rn.agenda.model.Fone;
 public class FoneService {
 	private FoneDAO dao = new FoneDAO();
 	public Boolean salvar(Fone fone) {
-// ¹
-		if(ObjectUtils.allNotNull(fone) || StringUtils.isNotEmpty(fone.getFone())) {
+// ï¿½
+		if(!ObjectUtils.isEmpty(fone) || !StringUtils.isEmpty(fone.getFone())) {
 			dao.create(fone);
 		}
 		return false;
 	}
 	public Boolean remove(Fone fone) {
-		if(ObjectUtils.allNotNull(fone) || StringUtils.isNotEmpty(fone.getFone())) {
+		if(!ObjectUtils.isEmpty(fone) || !StringUtils.isEmpty(fone.getFone())) {
 			dao.remove(fone);
 			return true;
 		}
@@ -26,4 +27,4 @@ public class FoneService {
 	}
 	
 }
-//¹		if(!(fone == null || fone.getFone().trim().isEmpty())) {
+//ï¿½		if(!(fone == null || fone.getFone().trim().isEmpty())) {
