@@ -12,14 +12,14 @@ public class ContatoService {
 
 	public Boolean salvar(Contato contato) {
 
-		if (ObjectUtils.isEmpty(contato) || StringUtils.isEmpty(contato.getNome())) {
+		if (!ObjectUtils.isEmpty(contato) || !StringUtils.isEmpty(contato.getNome())) {
 			dao.create(contato);
 		}
 		return false;
 	}
 
 	public Boolean remove(Contato contato) {
-		if (ObjectUtils.isEmpty(contato) || StringUtils.isEmpty(contato.getNome())) {
+		if (!ObjectUtils.isEmpty(contato) || !StringUtils.isEmpty(contato.getNome())) {
 			dao.remove(contato);
 			return true;
 		}
@@ -28,7 +28,7 @@ public class ContatoService {
 	}
 
 	public String update(Contato oldName, Contato newName) {
-		if (ObjectUtils.isEmpty(oldName) || StringUtils.isEmpty(oldName.getNome())) {
+		if (!ObjectUtils.isEmpty(oldName) || !StringUtils.isEmpty(oldName.getNome())) {
 			return dao.update(oldName, newName);
 		}
 		return null;
