@@ -5,8 +5,8 @@ package br.senai.rn.agenda.services;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
-import br.senai.rn.agenda.dao.FoneDAO;
 import br.senai.rn.agenda.model.Fone;
+import br.senai.rn.agenda.repositories.FoneDAO;
 
 public class FoneService {
 	private FoneDAO dao = new FoneDAO();

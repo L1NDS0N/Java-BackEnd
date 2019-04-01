@@ -6,8 +6,8 @@ package br.senai.rn.agenda.services;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
-import br.senai.rn.agenda.dao.EmailDAO;
 import br.senai.rn.agenda.model.Email;
+import br.senai.rn.agenda.repositories.EmailDAO;
 
 public class EmailService {
 	private EmailDAO dao = new EmailDAO();

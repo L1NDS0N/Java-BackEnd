@@ -1,77 +1,47 @@
 package br.senai.rn.agenda.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import br.senai.rn.agenda.dao.PersistDB;
 
-public class Contato implements PersistDB {
+@Entity
+@Table(name = "contato")
+public class Contato {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private List<Fone> fones;
-	private List<Email> emails;
-	
-	public Contato() {
-		this.fones = new ArrayList<Fone>();
-		this.emails = new ArrayList<Email>();
-	}
-
-	public Contato(Long id, String nome, List<Fone> fones, List<Email> emails) {
-		this.id = id;
-		this.nome = nome;
-		this.fones = fones;
-		this.emails = emails;
-	}
-	
-	public void adicionarFone(Fone fone) {
-		fones.add(fone);
-	}
-	
-	public void adicionarEmail(Email email) {
-		emails.add(email);
-	}
-	
-	public void removerFone(Fone fone) {
-		fones.remove(fone);
-	}
-	
-	public void removerEmail(Email email) {
-		emails.remove(email);
-	}
-	@Override
+	private String fones;
+	private String emails;
 	public Long getId() {
 		return id;
 	}
-	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public List<Fone> getFones() {
+	public String getFones() {
 		return fones;
 	}
-
-	public void setFones(List<Fone> fones) {
+	public void setFones(String fones) {
 		this.fones = fones;
 	}
-
-	public List<Email> getEmails() {
+	public String getEmails() {
 		return emails;
 	}
-
-	public void setEmails(List<Email> emails) {
+	public void setEmails(String emails) {
 		this.emails = emails;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -79,7 +49,6 @@ public class Contato implements PersistDB {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -96,12 +65,10 @@ public class Contato implements PersistDB {
 			return false;
 		return true;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Contato [id=" + id + ", nome=" + nome + ", fones=" + fones + ", emails=" + emails + "]";
 	}
-
-	
 	
 }

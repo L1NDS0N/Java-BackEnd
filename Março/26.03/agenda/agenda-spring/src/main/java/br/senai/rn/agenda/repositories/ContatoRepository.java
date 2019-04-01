@@ -1,10 +1,11 @@
-package br.senai.rn.agenda.dao;
+package br.senai.rn.agenda.repositories;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import br.senai.rn.agenda.model.Contato;
 
-public class ContatoDAO extends GenericDAO<Contato>{
+@Repository
+public interface ContatoRepository extends JpaRepository<Contato, Long>{
 
 }

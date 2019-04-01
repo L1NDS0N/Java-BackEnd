@@ -1,4 +1,4 @@
-package br.senai.rn.agenda.dao;
+package br.senai.rn.agenda.repositories;
 
 import br.senai.rn.agenda.model.Email;
 import br.senai.rn.agenda.model.Fone;
@@ -9,7 +9,7 @@ public class TestaFoneDAO {
 
 	public static void main(String[] args) {
 		EmailDAO edao = new EmailDAO();
-		ContatoDAO cdao = new ContatoDAO();
+		ContatoRepository cdao = new ContatoRepository();
 		FoneDAO fdao = new FoneDAO();
 		
 		Fone f1 = new Fone();

@@ -1,4 +1,4 @@
-package br.senai.rn.agenda.dao;
+package br.senai.rn.agenda.repositories;
 
 public interface PersistDB {
 

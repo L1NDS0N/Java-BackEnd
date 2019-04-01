@@ -1,4 +1,4 @@
-package br.senai.rn.agenda.dao;
+package br.senai.rn.agenda.repositories;
 
 import java.util.List;
 import java.util.List;

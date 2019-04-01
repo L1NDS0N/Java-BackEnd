@@ -1,36 +1,35 @@
 package br.senai.rn.agenda.services;
 
+import java.util.List;
+import java.util.Optional;
 
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import br.senai.rn.agenda.dao.ContatoDAO;
 import br.senai.rn.agenda.model.Contato;
+import br.senai.rn.agenda.repositories.ContatoRepository;
 
+@Service
 public class ContatoService {
-	private ContatoDAO dao = new ContatoDAO();
+	
+	@Autowired
+	private ContatoRepository repository;
 
-	public Boolean salvar(Contato contato) {
-
-		if (!ObjectUtils.isEmpty(contato) || !StringUtils.isEmpty(contato.getNome())) {
-			dao.create(contato);
-		}
-		return false;
+	public void save(Contato contato) {
+		repository.save(contato);
 	}
 
-	public Boolean remove(Contato contato) {
-		if (!ObjectUtils.isEmpty(contato) || !StringUtils.isEmpty(contato.getNome())) {
-			dao.remove(contato);
-			return true;
-		}
-
-		return null;
+	public List<Contato> findAll() {
+		return repository.findAll();
 	}
 
-	public String update(Contato oldName, Contato newName) {
-		if (!ObjectUtils.isEmpty(oldName) || !StringUtils.isEmpty(oldName.getNome())) {
-			return dao.update(oldName, newName);
-		}
-		return null;
+	public Contato findById(Long id) {
+		return repository.findById(id).get();
 	}
+
+	public void delete(Contato contato) {
+		repository.delete(contato);
+	}
+	
+	
 }
