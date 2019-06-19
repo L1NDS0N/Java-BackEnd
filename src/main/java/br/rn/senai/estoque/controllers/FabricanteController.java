@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/fabricantes")
@@ -32,5 +34,14 @@ public class FabricanteController {
         }
     return  ResponseEntity.ok(fabricantes);
     }
-    
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Fabricante> findById(@RequestParam Long id){
+        Optional<Fabricante> fabricante = service.findFabricanteById(id);
+        if (fabricante.isPresent()){
+            return ResponseEntity.ok((fabricante.get()));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
