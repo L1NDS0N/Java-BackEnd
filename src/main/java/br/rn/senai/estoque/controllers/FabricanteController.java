@@ -4,11 +4,11 @@ import br.rn.senai.estoque.models.Fabricante;
 import br.rn.senai.estoque.service.FabricanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,12 +36,22 @@ public class FabricanteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Fabricante> findById(@RequestParam Long id){
+    public ResponseEntity<Fabricante> findById(@PathVariable Long id){
         Optional<Fabricante> fabricante = service.findFabricanteById(id);
         if (fabricante.isPresent()){
             return ResponseEntity.ok((fabricante.get()));
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<?> salva(@RequestBody Fabricante fabricante, UriComponentsBuilder uriBuilder){
+        service.save(fabricante);
+
+        URI uri = uriBuilder.path("/fabricantes/{id}")
+                .buildAndExpand(fabricante.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(fabricante);
     }
 
 }

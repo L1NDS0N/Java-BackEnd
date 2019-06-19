@@ -16,7 +16,7 @@ public class FabricanteService {
     @Autowired
     private FabricanteRepository repository;
 
-    public void salva(Fabricante fabricante) {
+    public void save(Fabricante fabricante) {
 
         repository.save(fabricante);
     }
