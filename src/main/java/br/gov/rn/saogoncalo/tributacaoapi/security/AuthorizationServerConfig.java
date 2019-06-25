@@ -33,7 +33,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override // configurações do token
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
-                .tokenStore(tokenStore());
+                .tokenStore(tokenStore())
+                .accessTokenConverter(accessTokenConverter());
     }
 
     @Bean //tipo bean gerenciado pelo Spring, obrigatoriamente deve ser público
